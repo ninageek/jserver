@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.ninageek"} )
+@ComponentScan("com.ninageek" )
 public class Application extends SpringBootServletInitializer {
 
     @Override
