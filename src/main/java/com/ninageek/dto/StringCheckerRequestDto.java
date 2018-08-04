@@ -1,13 +1,13 @@
 package com.ninageek.dto;
 
-public class StringCheckerDto {
+public class StringCheckerRequestDto {
     private String firstString;
     private String secondString;
 
-    public StringCheckerDto() {
+    public StringCheckerRequestDto() {
     }
 
-    public StringCheckerDto(String firstString, String secondString) {
+    public StringCheckerRequestDto(String firstString, String secondString) {
         this.firstString = firstString;
         this.secondString = secondString;
     }

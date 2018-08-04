@@ -5,8 +5,26 @@ public class StringCheckerResponseDto {
     private boolean isSecondStringPalindrome;
     private boolean permutationCheck;
     private boolean traverseCheck;
+    private boolean isFirstStringEmpty;
+    private boolean isSecondStringEmpty;
 
     public StringCheckerResponseDto() {
+    }
+
+    public boolean isFirstStringEmpty() {
+        return isFirstStringEmpty;
+    }
+
+    public void setFirstStringEmpty(boolean firstStringEmpty) {
+        isFirstStringEmpty = firstStringEmpty;
+    }
+
+    public boolean isSecondStringEmpty() {
+        return isSecondStringEmpty;
+    }
+
+    public void setSecondStringEmpty(boolean secondStringEmpty) {
+        isSecondStringEmpty = secondStringEmpty;
     }
 
     public boolean isFirstStringPalindrome() {

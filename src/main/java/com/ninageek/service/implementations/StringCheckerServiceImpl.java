@@ -1,5 +1,7 @@
 package com.ninageek.service.implementations;
 
+import com.ninageek.dto.StringCheckerRequestDto;
+import com.ninageek.dto.StringCheckerResponseDto;
 import com.ninageek.service.StringCheckerService;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +49,7 @@ public class StringCheckerServiceImpl implements StringCheckerService {
         char[] a = firstString.toCharArray();
         char[] b = secondString.toCharArray();
         char[] c = new char[a.length];
+        char[] d = new char[a.length];
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a.length - 1; j++) {
                 c[j + 1] = a[j];
@@ -56,6 +59,20 @@ public class StringCheckerServiceImpl implements StringCheckerService {
                 return true;
             }
         }
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a.length - 1; j++) {
+                d[j] = a[j + 1];
+            }
+            d[a.length - 1] = a[0];
+            if (Arrays.equals(d, b)) {
+                return true;
+            }
+        }
         return false;
     }
-}
+
+    @Override
+    public void validate(StringCheckerRequestDto requestDto, StringCheckerResponseDto responseDto) {
+        if(requestDto.getFirstString().equals("")) responseDto.setFirstStringEmpty(true);
+        if(requestDto.getSecondString().equals("")) responseDto.setSecondStringEmpty(true);
+}}
