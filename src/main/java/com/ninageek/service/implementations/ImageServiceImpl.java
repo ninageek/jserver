@@ -21,7 +21,7 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     ServletContext servletContext;
 
-    public BufferedImage testMask(BufferedImage img) {
+    private BufferedImage testMask(BufferedImage img) {
         for (int x = 0; x < img.getWidth(); x++) {
             for (int y = 0; y < img.getHeight(); y++) {
                 if (y % 5 == 0) img.setRGB(x, y, 0xffffff);
@@ -30,7 +30,7 @@ public class ImageServiceImpl implements ImageService {
         return img;
     }
 
-    public BufferedImage rotateRight(BufferedImage img) {
+    private BufferedImage rotateRight(BufferedImage img) {
         BufferedImage rotatedImage = new BufferedImage(img.getHeight(), img.getWidth(), img.getType());
         for (int x = 0; x < rotatedImage.getWidth(); x++) {
             for (int y = 0; y < rotatedImage.getHeight(); y++) {
@@ -42,7 +42,7 @@ public class ImageServiceImpl implements ImageService {
 
     }
 
-    public BufferedImage rotateLeft(BufferedImage img) {
+    private BufferedImage rotateLeft(BufferedImage img) {
         BufferedImage rotatedImage = new BufferedImage(img.getHeight(), img.getWidth(), img.getType());
         for (int x = 0; x < rotatedImage.getWidth(); x++) {
             for (int y = 0; y < rotatedImage.getHeight(); y++) {
@@ -59,13 +59,15 @@ public class ImageServiceImpl implements ImageService {
         BufferedImage transformedImage = null;
         if (a.equals("rotateRight")) {
             transformedImage = rotateRight(decodedImage);
+        } else if (a.equals("rotateLeft")) {
+            transformedImage = rotateLeft(decodedImage);
         }
         String encodedImage = UtilBase64Image.encoder(transformedImage);
         image.setData(encodedImage);
         return image;
     }
 
-    public void saveImage(BufferedImage image) {
+    private void saveImage(BufferedImage image) {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         try {
             ImageIO.write(image, "jpg", bos);
