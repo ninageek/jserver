@@ -11,7 +11,7 @@ public class Image {
     public Image(String name, String data, String transformation) {
         this.name = name;
         this.data = data;
-        this.transformation=transformation;
+        this.transformation = transformation;
     }
 
     public String getTransformation() {
