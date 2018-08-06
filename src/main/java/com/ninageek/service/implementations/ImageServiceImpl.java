@@ -48,26 +48,22 @@ public class ImageServiceImpl implements ImageService {
             for (int y = 0; y < rotatedImage.getHeight(); y++) {
                 rotatedImage.setRGB(x, y, img.getRGB((rotatedImage.getHeight() - 1) - y, x));
             }
-
         }
         return rotatedImage;
-
     }
 
     @Override
     public Image transformImage(Image image) {
         BufferedImage decodedImage = UtilBase64Image.decoder(image.getData());
-
-        //TODO rotate image
-        BufferedImage leftRotatedImage = rotateLeft(decodedImage);
-        BufferedImage rightRotatedImage = rotateRight(decodedImage);
-        String encodedImage = UtilBase64Image.encoder(rightRotatedImage);
-
+        String a = image.getTransformation();
+        BufferedImage transformedImage = null;
+        if (a.equals("rotateRight")) {
+            transformedImage = rotateRight(decodedImage);
+        }
+        String encodedImage = UtilBase64Image.encoder(transformedImage);
         image.setData(encodedImage);
-
         return image;
     }
-
 
     public void saveImage(BufferedImage image) {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
